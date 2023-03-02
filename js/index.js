@@ -13,15 +13,15 @@ const showAllData = (data) => {
         <img src="${data.image}">
         <h2>Features</h2>
         <ol>
-            <li>a</li>
-            <li>b</li>
-            <li>c</li>
+            <li>${data.features[0]}</li>
+            <li>${data.features[1]}</li>
+            <li>${data.features[2]}</li>
         </ol>
         <hr>
         <div class="card-footer">
             <div class="left-section">
-                <h2>h</h2>
-                <p>j</p>
+                <h2>${data.name}</h2>
+                <p>Published-date : ${data.published_in}</p>
             </div>
             <div class="right-side">
                 <button>Details</button>
