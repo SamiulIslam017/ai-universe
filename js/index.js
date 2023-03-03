@@ -68,12 +68,7 @@ const showModalData = (id) => {
     .then(res => res.json())
     .then(data => showModalDataDetails(data.data))
 }
-// const showModalDataById = (id) => {
-//     const URL = `https://openapi.programming-hero.com/api/ai/tool/${id}`
-//     fetch(URL)
-//     .then(res => res.json())
-//     .then(data => showModalDataDetails(data.data))
-// }
+
 
 const showModalDataDetails =(value) => {
     const modalContainer =document.getElementById('modal-details');
@@ -135,17 +130,5 @@ const showModalDataDetails =(value) => {
     modalContainer.appendChild(div);
 }
 
-// sort by date
-// function shorByDate(){
-//     return fetch("https://openapi.programming-hero.com/api/ai/tools")
-//     .then(res => res.json())
-//     .then(data =>{ 
-//         (data.data.tools.sort(sortDate));
-    
-//     });
-    
-// }
-// function sortDate(a, b){
-//     return new Date(a.published_in).valueOf() - new Date(b.published_in).valueOf()
-// }
+
 loadAllData();
