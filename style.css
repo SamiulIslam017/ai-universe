@@ -88,6 +88,14 @@ header button{
     cursor: pointer;
 
 }
+.image{
+    position: relative;
+}
+.image span{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
 
 @media screen and (max-width:662px) {
     .cards{
