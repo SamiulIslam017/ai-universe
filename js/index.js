@@ -1,3 +1,11 @@
+const loadAllDataSort = () => {
+    fetch("https://openapi.programming-hero.com/api/ai/tools")
+    .then(res => res.json())
+    .then(data => data.data.tools.sort((first, second) => first.published_in - second.published_in));
+    
+
+}
+
 const loadAllData = () => {
     document.getElementById("spinner").classList.remove("d-none");
     fetch("https://openapi.programming-hero.com/api/ai/tools")
