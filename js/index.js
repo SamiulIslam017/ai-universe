@@ -101,20 +101,20 @@ const showModalDataDetails =(value) => {
                                         <div class="py-4 m-2">
                                             <h3 class="fs-5 fw-bold">Integration</h3>
                                             <ul>
-                                                <li>1</li>
-                                                <li>2</li>
-                                                <li>3</li>
+                                                <li>${value.integrations[0]}</li>
+                                                <li>${value.integrations[1]}</li>
+                                                <li>${value.integrations[2]}</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="right-side w-100 m-2 h-100">
                                     <div class="card image p-2">
-                                        <img src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg" class="card-img-top" alt="...">
+                                        <img class="img-fluid" src="${value.image_link[0]}" alt="...">
                                         <span class="badge text-bg-success">${value.accuracy.score ? value.accuracy.score + " % Accuracy" : "Accuracy not available"}</span>
                                         <div class="card-body text-center">
-                                          <h3 class="fs-5 fw-bold">Integration</h3>
-                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          <h3 class="fs-5 fw-bold">${value.input_output_examples[1].input}</h3>
+                                          <p class="card-text">${value.input_output_examples[1].output}</p>
                                         </div>
                                     </div>
                                 </div>
