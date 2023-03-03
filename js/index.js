@@ -99,17 +99,17 @@ const showModalDataDetails =(value) => {
                                         <div class="py-4 m-2">
                                             <h3 class="fs-5 fw-bold">Features</h3>
                                             <ul>
-                                                <li>${value.features[1].feature_name}</li>
-                                                <li>${value.features[2].feature_name}</li>
-                                                <li>${value.features[3].feature_name}</li>
+                                                <li>${value.features[1].feature_name ? value.features[1].feature_name : "No data Found"}</li>
+                                                <li>${value.features[2].feature_name ? value.features[2].feature_name : "No data Found"}</li>
+                                                <li>${value.features[3].feature_name ? value.features[3].feature_name : "No data Found"}</li>
                                             </ul>
                                         </div>
                                         <div class="py-4 m-2">
                                             <h3 class="fs-5 fw-bold">Integration</h3>
                                             <ul>
-                                                <li>${value.integrations[0]}</li>
-                                                <li>${value.integrations[1]}</li>
-                                                <li>${value.integrations[2]}</li>
+                                                <li>${value.integrations[0] ? value.integrations[0] : "No data found"}</li>
+                                                <li>${value.integrations[1] ? value.integrations[1] : "No data found"}</li>
+                                                <li>${value.integrations[2] ? value.integrations[2] : "No data found"}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@ const showModalDataDetails =(value) => {
                                         <span class="badge text-bg-success">${value.accuracy.score ? value.accuracy.score + " % Accuracy" : "Accuracy not available"}</span>
                                         <div class="card-body text-center">
                                           <h3 class="fs-5 fw-bold">${value.input_output_examples[1].input}</h3>
-                                          <p class="card-text">${value.input_output_examples[1].output}</p>
+                                          <p class="card-text">${value.input_output_examples[1].output ? value.input_output_examples[1].output : "No! Not Yet! Take a break!!!"}</p>
                                         </div>
                                     </div>
                                 </div>
