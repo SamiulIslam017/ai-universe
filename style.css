@@ -48,7 +48,7 @@ header button{
 
 .cards .card ol li{
     position: relative;
-    margin-left: 20px;
+    /* margin-left: 20px; */
 }
 .cards .card ol li::before{
     content: " ";
