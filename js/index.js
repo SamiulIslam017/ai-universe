@@ -57,6 +57,12 @@ const showModalData = (id) => {
     .then(res => res.json())
     .then(data => showModalDataDetails(data.data))
 }
+// const showModalDataById = (id) => {
+//     const URL = `https://openapi.programming-hero.com/api/ai/tool/${id}`
+//     fetch(URL)
+//     .then(res => res.json())
+//     .then(data => showModalDataDetails(data.data))
+// }
 
 const showModalDataDetails =(value) => {
     const modalContainer =document.getElementById('modal-details');
@@ -72,13 +78,13 @@ const showModalDataDetails =(value) => {
                                     <h3 class="fs-5 fw-bold">${value.description}</h3>
                                     <div class="pricing d-flex flex-sm-column flex-lg-row justify-content-between ">
                                         <div class="price p-4 bg-white rounded m-2">
-                                            <p class="text-success">$10/ month <span>Basic</span></p>
+                                            <p class="text-success">${value.pricing[0].price ? value.pricing[0].price : "Free Of Cost"} <span>${value.pricing[0].plan ? value.pricing[0].plan : " "}</span></p>
                                         </div>
                                         <div class="price p-4 bg-white rounded m-2">
-                                            <p class="text-primary">$10/ month <span>Basic</span></p>
+                                            <p class="text-primary">${value.pricing[1].price ? value.pricing[1].price : "Free Of Cost"} <span>${value.pricing[1].plan ? value.pricing[1].plan : " "}</span></p>
                                         </div>
                                         <div class="price p-4 bg-white rounded m-2">
-                                            <p class="text-info">$10/ month <span>Basic</span></p>
+                                            <p class="text-info">${value.pricing[2].price ? value.pricing[2].price : "Free Of Cost"} <span>${value.pricing[2].plan ? value.pricing[2].plan : "Enjoy!!! "}</span></p>
                                         </div>
                                         
                                     </div>
@@ -87,9 +93,9 @@ const showModalDataDetails =(value) => {
                                         <div class="py-4 m-2">
                                             <h3 class="fs-5 fw-bold">Features</h3>
                                             <ul>
-                                                <li>1</li>
-                                                <li>2</li>
-                                                <li>3</li>
+                                                <li>${value.features[1].feature_name}</li>
+                                                <li>${value.features[2].feature_name}</li>
+                                                <li>${value.features[3].feature_name}</li>
                                             </ul>
                                         </div>
                                         <div class="py-4 m-2">
@@ -105,7 +111,7 @@ const showModalDataDetails =(value) => {
                                 <div class="right-side w-100 m-2 h-100">
                                     <div class="card image p-2">
                                         <img src="https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg" class="card-img-top" alt="...">
-                                        <span class="badge text-bg-success">Success</span>
+                                        <span class="badge text-bg-success">${value.accuracy.score ? value.accuracy.score + " % Accuracy" : "Accuracy not available"}</span>
                                         <div class="card-body text-center">
                                           <h3 class="fs-5 fw-bold">Integration</h3>
                                           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
