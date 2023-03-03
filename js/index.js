@@ -1,7 +1,10 @@
 const loadAllData = () => {
+    document.getElementById("spinner").classList.remove("d-none");
     fetch("https://openapi.programming-hero.com/api/ai/tools")
     .then(res => res.json())
-    .then(data => showAllData(data.data.tools.slice(0,6)));
+    .then(data => {
+        document.getElementById("spinner").classList.add("d-none");
+        showAllData(data.data.tools.slice(0,6))});
     
 
 }
@@ -123,4 +126,18 @@ const showModalDataDetails =(value) => {
     `
     modalContainer.appendChild(div);
 }
+
+// sort by date
+// function shorByDate(){
+//     return fetch("https://openapi.programming-hero.com/api/ai/tools")
+//     .then(res => res.json())
+//     .then(data =>{ 
+//         (data.data.tools.sort(sortDate));
+    
+//     });
+    
+// }
+// function sortDate(a, b){
+//     return new Date(a.published_in).valueOf() - new Date(b.published_in).valueOf()
+// }
 loadAllData();

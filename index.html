@@ -12,11 +12,16 @@
   <body>
     <header>
         <h1>AI Universe Hub</h1>
-        <button class="button">Shot By Date</button>
+        <button onclick="showAllData('data.data.tools')" class="button">Shot By Date</button>
     </header>
     <main>
         <section>
             <div class="container">
+                  <div id="spinner" class="d-flex justify-content-center d-none">
+                    <div class="spinner-grow" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </div>
                 <div id="cards" class="cards">
                    
                     
