@@ -15,10 +15,10 @@ header button{
     padding: 10px 20px;
     font-size: 1em;
     font-weight: bold;
-    background: tomato;
+    background: rgba(135, 207, 235, 0.683);
     border: 0;
     border-radius: 5px;
-    color: #fff;
+    color: #000;
     cursor: pointer;
 }
 .container{
@@ -95,6 +95,25 @@ header button{
     position: absolute;
     top: 5%;
     right: 5%;
+}
+.modal-content{
+    position: initial;
+}
+.modal-header{
+    padding: 0;
+    border: 0;
+    display: block;
+}
+.modal-header button {
+    background: red;
+    border-radius: 10px;
+    border: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-weight: bold;
 }
 
 @media screen and (max-width:662px) {

@@ -1,12 +1,8 @@
-const loadAllDataSort = () => {
-    fetch("https://openapi.programming-hero.com/api/ai/tools")
-    .then(res => res.json())
-    .then(data => data.data.tools.sort((first, second) => first.published_in - second.published_in));
-    
 
-}
+ 
 
 const loadAllData = () => {
+    
     document.getElementById("spinner").classList.remove("d-none");
     fetch("https://openapi.programming-hero.com/api/ai/tools")
     .then(res => res.json())
@@ -71,26 +67,34 @@ const showModalData = (id) => {
 
 
 const showModalDataDetails =(value) => {
+    const accuracy = document.getElementById('accuracy');
     const modalContainer =document.getElementById('modal-details');
     modalContainer.innerHTML="";
     const div = document.createElement('div');
     div.classList.add('modal-content');
+    // ${value.pricing[0].price ? value.pricing[0].price : "Free Of Cost"} <span>${value.pricing[0].plan ? value.pricing[0].plan : " "}
+    //${value.integrations[0] ? value.integrations[0] : "No data found"}
+    // ${value.accuracy.score ? value.accuracy.score + " % Accuracy" : "Accuracy not available"
+    // ${value.input_output_examples[1].input}
+    //${value.input_output_examples[1].output ? value.input_output_examples[1].output : "No! Not Yet! Take a break!!!"}
     div.innerHTML = `
                             <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button class="text-white" type="button" data-bs-dismiss="modal" aria-label="Close"> Close Modal <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.6585 4.92888C18.049 4.53836 18.6822 4.53835 19.0727 4.92888C19.4632 5.3194 19.4632 5.95257 19.0727 6.34309L13.4158 12L19.0727 17.6568C19.4632 18.0473 19.4632 18.6805 19.0727 19.071C18.6822 19.4615 18.049 19.4615 17.6585 19.071L12.0016 13.4142L6.34481 19.071C6.3387 19.0771 6.33254 19.0831 6.32632 19.089C5.93455 19.4614 5.31501 19.4554 4.93059 19.071C4.6377 18.7781 4.56447 18.3487 4.71092 17.9876C4.75973 17.8672 4.83296 17.7544 4.93059 17.6568L10.5874 12L4.93059 6.34314C4.54006 5.95262 4.54006 5.31945 4.93059 4.92893C5.32111 4.5384 5.95428 4.5384 6.3448 4.92893L12.0016 10.5857L17.6585 4.92888Z" fill="white"/>
+                            </svg></button>
                             </div>
-                            <div class="modal-body d-flex flex-sm-column flex-lg-row">
+                            <div class="modal-body d-flex flex-sm-column flex-lg-row px-5 py-4">
                                 <div class="left-side w-100 h-100 bg-danger-subtle p-4 rounded m-2">
-                                    <h3 class="fs-5 fw-bold">${value.description}</h3>
+                                    <h3 class="fs-5 fw-bold">${value.description === null ? "Description not Available" : value.description }</h3>
                                     <div class="pricing d-flex flex-sm-column flex-lg-row justify-content-between ">
                                         <div class="price p-4 bg-white rounded m-2">
-                                            <p class="text-success">${value.pricing[0].price ? value.pricing[0].price : "Free Of Cost"} <span>${value.pricing[0].plan ? value.pricing[0].plan : " "}</span></p>
+                                            <p class="text-success fw-bold">${value.pricing === null ?  "Free Of Cost" : value.pricing[0].price } <span>${value.pricing === null ? " " : value.pricing[0].plan }</span></p>
                                         </div>
                                         <div class="price p-4 bg-white rounded m-2">
-                                            <p class="text-primary">${value.pricing[1].price ? value.pricing[1].price : "Free Of Cost"} <span>${value.pricing[1].plan ? value.pricing[1].plan : " "}</span></p>
+                                            <p class="text-primary fw-bold">${value.pricing === null ?  "Free Of Cost" : value.pricing[1].price } <span>${value.pricing === null ? " " : value.pricing[1].plan }</span></p>
                                         </div>
                                         <div class="price p-4 bg-white rounded m-2">
-                                            <p class="text-info">${value.pricing[2].price ? value.pricing[2].price : "Free Of Cost"} <span>${value.pricing[2].plan ? value.pricing[2].plan : "Enjoy!!! "}</span></p>
+                                            <p class="text-info fw-bold">${value.pricing === null ?  "Free Of Cost" : value.pricing[2].price } <span>${value.pricing === null ? " " : value.pricing[2].plan }</span></p>
                                         </div>
                                         
                                     </div>
@@ -98,7 +102,7 @@ const showModalDataDetails =(value) => {
                                     <div class="features d-flex flex-sm-column flex-lg-row justify-content-between ">
                                         <div class="py-4 m-2">
                                             <h3 class="fs-5 fw-bold">Features</h3>
-                                            <ul>
+                                            <ul style="list-style:none; padding-left:.8em;">
                                                 <li>${value.features[1].feature_name ? value.features[1].feature_name : "No data Found"}</li>
                                                 <li>${value.features[2].feature_name ? value.features[2].feature_name : "No data Found"}</li>
                                                 <li>${value.features[3].feature_name ? value.features[3].feature_name : "No data Found"}</li>
@@ -106,10 +110,10 @@ const showModalDataDetails =(value) => {
                                         </div>
                                         <div class="py-4 m-2">
                                             <h3 class="fs-5 fw-bold">Integration</h3>
-                                            <ul>
-                                                <li>${value.integrations[0] ? value.integrations[0] : "No data found"}</li>
-                                                <li>${value.integrations[1] ? value.integrations[1] : "No data found"}</li>
-                                                <li>${value.integrations[2] ? value.integrations[2] : "No data found"}</li>
+                                            <ul style="list-style:none; padding-left:.8em;">
+                                                <li>${value.integrations === null || value.integrations[0] === undefined ?   "no data found" : value.integrations[0]} </li>
+                                                <li>${value.integrations === null || value.integrations[1] === undefined ?    "" : value.integrations[1]}</li>
+                                                <li>${value.integrations === null || value.integrations[2] === undefined ?    "" : value.integrations[2] }</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -117,10 +121,10 @@ const showModalDataDetails =(value) => {
                                 <div class="right-side w-100 m-2 h-100">
                                     <div class="card image p-2">
                                         <img class="img-fluid" src="${value.image_link[0]}" alt="...">
-                                        <span class="badge text-bg-success">${value.accuracy.score ? value.accuracy.score + " % Accuracy" : "Accuracy not available"}</span>
+                                        <span id="accuracy" class="badge text-bg-success">${value.accuracy.score === null ? '' : value.accuracy.score*100 + " % Accuracy"  }</span>
                                         <div class="card-body text-center">
-                                          <h3 class="fs-5 fw-bold">${value.input_output_examples[1].input}</h3>
-                                          <p class="card-text">${value.input_output_examples[1].output ? value.input_output_examples[1].output : "No! Not Yet! Take a break!!!"}</p>
+                                          <h3 class="fs-5 fw-bold">${value.input_output_examples === null ? "Can You Give me any information?" : value.input_output_examples[1].input}</h3>
+                                          <p class="card-text">${ value.input_output_examples === null ? "No! Not Yet! Take a break!!!" : value.input_output_examples[1].output }</p>
                                         </div>
                                     </div>
                                 </div>
